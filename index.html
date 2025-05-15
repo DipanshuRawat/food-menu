@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Menu</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff9f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #ff6f00;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ff6f00;
+      padding-bottom: 5px;
+      margin-top: 40px;
+    }
+
+    .combo {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #fff3e0;
+      border-radius: 8px;
+    }
+
+    .combo h3 {
+      margin: 0 0 10px;
+      color: #d84315;
+    }
+
+    .price {
+      font-weight: bold;
+      float: right;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .example {
+      background-color: #f1f8e9;
+      padding: 10px;
+      margin: 10px 0;
+      border-left: 5px solid #7cb342;
+    }
+
+    footer {
+      background-color: #ffe0b2;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .price {
+        float: none;
+        display: block;
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🍔 Food Menu</h1>
+  <p>Delicious Combos & Custom Meals</p>
+</header>
+
+<div class="container">
+  <h2>COMBO MEALS</h2>
+
+  <div class="combo">
+    <h3>1. Classic Combo <span class="price">₹199</span></h3>
+    <ul>
+      <li>Cheesy Classic Burger (Veg/Chicken)</li>
+      <li>Regular Fries</li>
+      <li>Soft Drink (Coke / Sprite / Fanta)</li>
+    </ul>
+  </div>
+
+  <div class="combo">
+    <h3>2. Pizza Lover Combo <span class="price">₹299</span></h3>
+    <ul>
+      <li>7" Veggie Delight Pizza</li>
+      <li>Garlic Breadsticks (2 pcs)</li>
+      <li>Mint Mojito or Cold Coffee</li>
+    </ul>
+  </div>
+
+  <div class="combo">
+    <h3>3. Momo Mania Combo <span class="price">₹219</span></h3>
+    <ul>
+      <li>6 pcs Steamed Momos (Veg / Chicken)</li>
+      <li>Peri Peri Fries</li>
+      <li>Fruit Punch Mocktail</li>
+    </ul>
+  </div>
+
+  <div class="combo">
+    <h3>4. Double Trouble Combo <span class="price">₹349</span></h3>
+    <ul>
+      <li>Double Decker Burger (Veg/Chicken)</li>
+      <li>Cheese Loaded Fries</li>
+      <li>Blue Lagoon Mocktail</li>
+    </ul>
+  </div>
+
+  <div class="combo">
+    <h3>5. Friends Feast Combo <span class="price">₹699</span></h3>
+    <ul>
+      <li>1 Regular Pizza (Your choice)</li>
+      <li>2 Burgers (1 Veg + 1 Chicken)</li>
+      <li>1 Large Fries</li>
+      <li>2 Mocktails or Cold Coffees</li>
+    </ul>
+  </div>
+
+  <div class="combo">
+    <h3>6. Desi Delight Combo <span class="price">₹259</span></h3>
+    <ul>
+      <li>Tandoori Momos (Veg / Chicken)</li>
+      <li>Masala Fries</li>
+      <li>Virgin Pina Colada</li>
+    </ul>
+  </div>
+
+  <h2>CUSTOM COMBO MEALS</h2>
+
+  <p><strong>Build Your Own Combo (Starts at ₹229)</strong></p>
+
+  <h3>Step 1: Choose One Main</h3>
+  <ul>
+    <li><strong>Burger:</strong> Cheesy Classic (Veg/Chicken), Firecracker Burger, Paneer Tandoori Burger, Grilled Chicken Deluxe</li>
+    <li><strong>Pizza (7”):</strong> Margherita Bliss, Veggie Delight, Chicken Tikka Treat, Paneer Paprika</li>
+    <li><strong>Momos (6 pcs):</strong> Steamed Veg / Chicken, Tandoori Veg / Chicken, Fried Momos (Cheese Optional)</li>
+  </ul>
+
+  <h3>Step 2: Choose One Side</h3>
+  <ul>
+    <li>Classic Salted Fries</li>
+    <li>Peri Peri Fries</li>
+    <li>Cheese Loaded Fries (+₹20)</li>
+    <li>Garlic Breadsticks</li>
+    <li>Chicken/Veg Nuggets</li>
+  </ul>
+
+  <h3>Step 3: Choose One Drink</h3>
+  <ul>
+    <li>Soft Drink (Coke/Sprite/Fanta)</li>
+    <li>Mint Mojito (+₹20)</li>
+    <li>Cold Coffee (+₹30)</li>
+    <li>Fruit Punch / Blue Lagoon / Pina Colada (+₹30)</li>
+  </ul>
+
+  <div class="example"><strong>Example Combo:</strong> Burger + Peri Peri Fries + Mint Mojito = ₹249</div>
+  <div class="example"><strong>Example Combo:</strong> Paneer Pizza + Garlic Bread + Cold Coffee = ₹279</div>
+  <div class="example"><strong>Example Combo:</strong> Tandoori Chicken Momos + Cheese Fries + Blue Lagoon = ₹299</div>
+</div>
+
+<footer>
+  <p><strong>Address:</strong> C-1/503 Jagannath Complex, Pramila Nagar, Kandarpada, Dahisar W</p>
+  <p><strong>Phone:</strong> +91 84336 15870</p>
+</footer>
+
+</body>
+</html>
