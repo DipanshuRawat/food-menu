@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combo Meals Menu</title>
+    <title>Food Menu</title>
     <style>
         /* Global Styles */
         * {
@@ -31,140 +31,19 @@
             padding: 20px;
         }
         
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
-            color: #1a1a1a;
-            text-align: center;
-            padding: 30px 0;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, 
-                rgba(255, 215, 0, 0.1) 0%, 
-                rgba(255, 215, 0, 0) 50%, 
-                rgba(255, 215, 0, 0.1) 100%);
-            z-index: -1;
-            border-radius: 15px;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            font-weight: 700;
-        }
-        
-        /* Combo Grid */
-        .combos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .combo-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-        
-        .combo-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
-            border-color: rgba(255, 215, 0, 0.6);
-        }
-        
-        .combo-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .combo-image::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
-        }
-        
-        .combo-details {
-            padding: 20px;
-        }
-        
-        .combo-title {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            align-items: center;
-        }
-        
-        .combo-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1a1a1a;
-        }
-        
-        .combo-price {
-            font-size: 1.5rem;
-            color: #ff8c00;
-            font-weight: bold;
-            background: rgba(255, 215, 0, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-        
-        .combo-items {
-            margin-bottom: 15px;
-        }
-        
-        .combo-items li {
-            list-style-type: none;
-            padding: 8px 0;
-            border-bottom: 1px dashed rgba(0,0,0,0.1);
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        .combo-items li::before {
-            content: "•";
-            color: #ff8c00;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        
-        /* Custom Combo Section */
-        .custom-combo {
+        /* Section Styles */
+        .menu-section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.1);
             border: 1px solid rgba(255, 215, 0, 0.3);
         }
         
-        .custom-combo h2 {
+        .section-title {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: #1a1a1a;
             font-size: 2rem;
             position: relative;
@@ -173,7 +52,7 @@
             transform: translateX(-50%);
         }
         
-        .custom-combo h2::after {
+        .section-title::after {
             content: "";
             position: absolute;
             bottom: -5px;
@@ -184,110 +63,58 @@
             border-radius: 3px;
         }
         
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
+        /* Item Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
         
-        .step {
-            flex: 1;
-            min-width: 250px;
-            background: rgba(255, 215, 0, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-        
-        .step h3 {
-            color: #ff8c00;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #ffd700;
-        }
-        
-        .step ul {
-            list-style-type: none;
-        }
-        
-        .step li {
-            padding: 8px 0;
-            border-bottom: 1px dashed rgba(0,0,0,0.1);
-        }
-        
-        .step li strong {
-            color: #1a1a1a;
-        }
-        
-        .examples {
-            margin-top: 30px;
-            background: rgba(255, 215, 0, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px dashed rgba(255, 215, 0, 0.3);
-        }
-        
-        .examples h3 {
-            color: #1a1a1a;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .examples li {
-            padding: 8px 0;
-            border-bottom: 1px dashed rgba(0,0,0,0.1);
-            font-weight: 500;
-        }
-        
-        /* Footer */
-        footer {
-            background: rgba(26, 26, 26, 0.9);
-            color: #ffd700;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-        
-        .contact-info {
-            margin-bottom: 20px;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #ffd700;
-        }
-        
-        .contact-info p {
-            margin: 5px 0;
-            opacity: 0.9;
-        }
-        
-        .food-images {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
-        .food-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            object-fit: cover;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+        .item-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border: 2px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
         
-        .food-image:hover {
-            transform: scale(1.1);
-            border-color: #ffd700;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        .item-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+        }
+        
+        .item-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .item-image::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+        }
+        
+        .item-details {
+            padding: 20px;
+        }
+        
+        .item-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        
+        .item-desc {
+            color: #666;
+            font-size: 0.95rem;
         }
         
         /* Floating food icons */
@@ -306,16 +133,12 @@
         
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .combos-grid {
+            .items-grid {
                 grid-template-columns: 1fr;
             }
             
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .steps {
-                flex-direction: column;
+            .section-title {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -328,183 +151,199 @@
     <div class="floating-icon" style="top: 80%; left: 10%; font-size: 45px;">🍟</div>
     
     <div class="container">
-        <header>
-            <h1>COMBO MEALS</h1>
-            <p style="font-size: 1.2rem; font-weight: 600;">Delicious combinations at great prices!</p>
-        </header>
-        
-        <div class="combos-grid">
-            <!-- Combo 1 -->
-            <div class="combo-card">
-                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                <div class="combo-details">
-                    <div class="combo-title">
-                        <span class="combo-name">Classic Combo</span>
-                        <span class="combo-price">₹199</span>
+        <!-- Burgers Section -->
+        <div class="menu-section">
+            <h2 class="section-title">BURGERS</h2>
+            <div class="items-grid">
+                <!-- Burger 1 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Classic Cheese Burst</h3>
+                        <p class="item-desc">Juicy patty with double cheese & house sauce</p>
                     </div>
-                    <ul class="combo-items">
-                        <li>Cheesy Classic Burger (Veg/Chicken)</li>
-                        <li>Regular Fries</li>
-                        <li>Soft Drink (Coke / Sprite / Fanta)</li>
-                    </ul>
                 </div>
-            </div>
-            
-            <!-- Combo 2 -->
-            <div class="combo-card">
-                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                <div class="combo-details">
-                    <div class="combo-title">
-                        <span class="combo-name">Pizza Lover Combo</span>
-                        <span class="combo-price">₹299</span>
+                
+                <!-- Burger 2 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Spicy Crunch Burger</h3>
+                        <p class="item-desc">Crispy patty, jalapeños, spicy mayo</p>
                     </div>
-                    <ul class="combo-items">
-                        <li>7" Veggie Delight Pizza</li>
-                        <li>Garlic Breadsticks (2 pcs)</li>
-                        <li>Mint Mojito or Cold Coffee</li>
-                    </ul>
                 </div>
-            </div>
-            
-            <!-- Combo 3 -->
-            <div class="combo-card">
-                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1603893662172-99ed0cea2a08?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                <div class="combo-details">
-                    <div class="combo-title">
-                        <span class="combo-name">Momo Mania Combo</span>
-                        <span class="combo-price">₹219</span>
+                
+                <!-- Burger 3 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607013251379-e6eecfffe234?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Paneer Supreme (Veg)</h3>
+                        <p class="item-desc">Grilled paneer, creamy sauce, lettuce</p>
                     </div>
-                    <ul class="combo-items">
-                        <li>6 pcs Steamed Momos (Veg / Chicken)</li>
-                        <li>Peri Peri Fries</li>
-                        <li>Fruit Punch Mocktail</li>
-                    </ul>
                 </div>
-            </div>
-            
-            <!-- Combo 4 -->
-            <div class="combo-card">
-                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                <div class="combo-details">
-                    <div class="combo-title">
-                        <span class="combo-name">Double Trouble Combo</span>
-                        <span class="combo-price">₹349</span>
+                
+                <!-- Burger 4 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1530554764233-e79e16c91d08?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Smoky BBQ Chicken</h3>
+                        <p class="item-desc">BBQ chicken, caramelized onions, smoky dressing</p>
                     </div>
-                    <ul class="combo-items">
-                        <li>Double Decker Burger (Veg/Chicken)</li>
-                        <li>Cheese Loaded Fries</li>
-                        <li>Blue Lagoon Mocktail</li>
-                    </ul>
                 </div>
-            </div>
-            
-            <!-- Combo 5 -->
-            <div class="combo-card">
-                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                <div class="combo-details">
-                    <div class="combo-title">
-                        <span class="combo-name">Friends Feast Combo</span>
-                        <span class="combo-price">₹699</span>
+                
+                <!-- Burger 5 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Double Trouble</h3>
+                        <p class="item-desc">Double patty, double cheese, extra indulgence</p>
                     </div>
-                    <ul class="combo-items">
-                        <li>1 Regular Pizza (Your choice)</li>
-                        <li>2 Burgers (1 Veg + 1 Chicken)</li>
-                        <li>1 Large Fries</li>
-                        <li>2 Mocktails or Cold Coffees</li>
-                    </ul>
-                    <p style="font-style: italic; color: #666; margin-top: 10px;">For 2-3 people</p>
-                </div>
-            </div>
-            
-            <!-- Combo 6 -->
-            <div class="combo-card">
-                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                <div class="combo-details">
-                    <div class="combo-title">
-                        <span class="combo-name">Desi Delight Combo</span>
-                        <span class="combo-price">₹259</span>
-                    </div>
-                    <ul class="combo-items">
-                        <li>Tandoori Momos (Veg / Chicken)</li>
-                        <li>Masala Fries</li>
-                        <li>Virgin Pina Colada</li>
-                    </ul>
                 </div>
             </div>
         </div>
         
-        <div class="custom-combo">
-            <h2>CUSTOM COMBO MEALS</h2>
-            <p style="text-align: center; margin-bottom: 20px; font-size: 1.1rem;">Build Your Own Combo (Starts at ₹229)</p>
-            
-            <div class="steps">
-                <div class="step">
-                    <h3>Step 1: Choose One Main</h3>
-                    <ul>
-                        <li><strong>Burger:</strong></li>
-                        <li>Cheesy Classic (Veg/Chicken)</li>
-                        <li>Firecracker Burger</li>
-                        <li>Paneer Tandoori Burger</li>
-                        <li>Grilled Chicken Deluxe</li>
-                        <li><strong>Pizza (7"):</strong></li>
-                        <li>Margherita Bliss</li>
-                        <li>Veggie Delight</li>
-                        <li>Chicken Tikka Treat</li>
-                        <li>Paneer Paprika</li>
-                        <li><strong>Momos (6 pcs):</strong></li>
-                        <li>Steamed Veg / Chicken</li>
-                        <li>Tandoori Veg / Chicken</li>
-                        <li>Fried Momos (Cheese Optional)</li>
-                    </ul>
+        <!-- Pizzas Section -->
+        <div class="menu-section">
+            <h2 class="section-title">PIZZAS (7" personal / 12" regular)</h2>
+            <div class="items-grid">
+                <!-- Pizza 1 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Margherita Bliss</h3>
+                        <p class="item-desc">Classic cheese & tomato sauce</p>
+                    </div>
                 </div>
                 
-                <div class="step">
-                    <h3>Step 2: Choose One Side</h3>
-                    <ul>
-                        <li>Classic Salted Fries</li>
-                        <li>Peri Peri Fries</li>
-                        <li>Cheese Loaded Fries (+₹20)</li>
-                        <li>Garlic Breadsticks</li>
-                        <li>Chicken/Veg Nuggets</li>
-                    </ul>
+                <!-- Pizza 2 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601924582970-9238bcb495d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Pepperoni Punch</h3>
+                        <p class="item-desc">Loaded with spicy pepperoni</p>
+                    </div>
                 </div>
                 
-                <div class="step">
-                    <h3>Step 3: Choose One Drink</h3>
-                    <ul>
-                        <li>Soft Drink (Coke/Sprite/Fanta)</li>
-                        <li>Mint Mojito (+₹20)</li>
-                        <li>Cold Coffee (+₹30)</li>
-                        <li>Fruit Punch / Blue Lagoon / Pina Colada (+₹30)</li>
-                    </ul>
+                <!-- Pizza 3 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Veggie Overload</h3>
+                        <p class="item-desc">Bell peppers, olives, mushrooms, corn</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="examples">
-                <h3>Example Combos:</h3>
-                <ul>
-                    <li>Burger + Peri Peri Fries + Mint Mojito = ₹249</li>
-                    <li>Paneer Pizza + Garlic Bread + Cold Coffee = ₹279</li>
-                    <li>Tandoori Chicken Momos + Cheese Fries + Blue Lagoon = ₹299</li>
-                </ul>
+                
+                <!-- Pizza 4 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Chicken Tikka Treat</h3>
+                        <p class="item-desc">Tikka chicken chunks, onions, and cheese</p>
+                    </div>
+                </div>
+                
+                <!-- Pizza 5 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Four Cheese Fantasy</h3>
+                        <p class="item-desc">Mozzarella, cheddar, parmesan, and feta</p>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <footer>
-            <div class="contact-info">
-                <h3>Visit Us</h3>
-                <p>C-1/503 Jagannath complex, Pramila nagar, Kandarpada, Dahisar W</p>
-                <p>Phone: +91 84336 15870</p>
+        <!-- Fries & Sides Section -->
+        <div class="menu-section">
+            <h2 class="section-title">FRIES & SIDES</h2>
+            <div class="items-grid">
+                <!-- Side 1 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Classic Salted Fries</h3>
+                    </div>
+                </div>
+                
+                <!-- Side 2 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1625937323771-77a9205a1e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Peri Peri Masala Fries</h3>
+                    </div>
+                </div>
+                
+                <!-- Side 3 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1580310614656-4bafca02554e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Cheese Loaded Fries</h3>
+                    </div>
+                </div>
+                
+                <!-- Side 4 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">BBQ Chicken Poppers</h3>
+                    </div>
+                </div>
+                
+                <!-- Side 5 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1608190003443-86ab6a06050a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Garlic Breadsticks (with dip)</h3>
+                    </div>
+                </div>
             </div>
-            
-            <div class="food-images">
-                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Delicious food" class="food-image">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Tasty burger" class="food-image">
-                <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Pizza slice" class="food-image">
-                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Fresh salad" class="food-image">
-                <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Chicken dish" class="food-image">
+        </div>
+        
+        <!-- Momos Section -->
+        <div class="menu-section">
+            <h2 class="section-title">MOMOS (6 pcs per plate)</h2>
+            <div class="items-grid">
+                <!-- Momo 1 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603893662172-99ed0cea2a08?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Steamed Veg Momos</h3>
+                    </div>
+                </div>
+                
+                <!-- Momo 2 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Steamed Chicken Momos</h3>
+                    </div>
+                </div>
+                
+                <!-- Momo 3 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603893718540-0d31d7074ad9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Tandoori Paneer Momos</h3>
+                    </div>
+                </div>
+                
+                <!-- Momo 4 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Spicy Fried Chicken Momos</h3>
+                    </div>
+                </div>
+                
+                <!-- Momo 5 -->
+                <div class="item-card">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1630910392194-9b9d9f4aaf6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">Cheesy Corn Momos</h3>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </div>
     </div>
 </body>
 </html>
