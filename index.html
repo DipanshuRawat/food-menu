@@ -10,14 +10,20 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
-            background-color: #f8f8f8;
+            background-color: #1a1a1a;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.2) 0%, transparent 20%);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
         
         .container {
             max-width: 1200px;
@@ -27,19 +33,37 @@
         
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, #ff512f, #dd2476);
-            color: white;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #1a1a1a;
             text-align: center;
             padding: 30px 0;
             border-radius: 10px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, 
+                rgba(255, 215, 0, 0.1) 0%, 
+                rgba(255, 215, 0, 0) 50%, 
+                rgba(255, 215, 0, 0.1) 100%);
+            z-index: -1;
+            border-radius: 15px;
         }
         
         h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: 700;
         }
         
         /* Combo Grid */
@@ -51,21 +75,35 @@
         }
         
         .combo-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
         
         .combo-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.6);
         }
         
         .combo-image {
             height: 200px;
             background-size: cover;
             background-position: center;
+            position: relative;
+        }
+        
+        .combo-image::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
         }
         
         .combo-details {
@@ -76,18 +114,22 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
+            align-items: center;
         }
         
         .combo-name {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #333;
+            color: #1a1a1a;
         }
         
         .combo-price {
             font-size: 1.5rem;
-            color: #ff512f;
+            color: #ff8c00;
             font-weight: bold;
+            background: rgba(255, 215, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
         }
         
         .combo-items {
@@ -96,23 +138,50 @@
         
         .combo-items li {
             list-style-type: none;
-            padding: 5px 0;
-            border-bottom: 1px dashed #eee;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .combo-items li::before {
+            content: "•";
+            color: #ff8c00;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
         
         /* Custom Combo Section */
         .custom-combo {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
         
         .custom-combo h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: #333;
+            color: #1a1a1a;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .custom-combo h2::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #ffd700, #ff8c00);
+            border-radius: 3px;
         }
         
         .steps {
@@ -125,13 +194,17 @@
         .step {
             flex: 1;
             min-width: 250px;
+            background: rgba(255, 215, 0, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
         }
         
         .step h3 {
-            color: #ff512f;
+            color: #ff8c00;
             margin-bottom: 15px;
             padding-bottom: 5px;
-            border-bottom: 2px solid #ff512f;
+            border-bottom: 2px solid #ffd700;
         }
         
         .step ul {
@@ -140,29 +213,57 @@
         
         .step li {
             padding: 8px 0;
-            border-bottom: 1px dashed #eee;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+        
+        .step li strong {
+            color: #1a1a1a;
         }
         
         .examples {
             margin-top: 30px;
+            background: rgba(255, 215, 0, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px dashed rgba(255, 215, 0, 0.3);
         }
         
         .examples h3 {
-            color: #333;
+            color: #1a1a1a;
             margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .examples li {
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            font-weight: 500;
         }
         
         /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: rgba(26, 26, 26, 0.9);
+            color: #ffd700;
             padding: 30px;
             border-radius: 10px;
             text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
         
         .contact-info {
             margin-bottom: 20px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            opacity: 0.9;
         }
         
         .food-images {
@@ -178,15 +279,58 @@
             height: 100px;
             border-radius: 10px;
             object-fit: cover;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .food-image:hover {
+            transform: scale(1.1);
+            border-color: #ffd700;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Floating food icons */
+        .floating-icon {
+            position: fixed;
+            opacity: 0.1;
+            z-index: -1;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .combos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Floating decorative elements -->
+    <div class="floating-icon" style="top: 10%; left: 5%; font-size: 50px;">🍔</div>
+    <div class="floating-icon" style="top: 70%; left: 80%; font-size: 40px;">🍕</div>
+    <div class="floating-icon" style="top: 30%; left: 90%; font-size: 60px;">🥤</div>
+    <div class="floating-icon" style="top: 80%; left: 10%; font-size: 45px;">🍟</div>
+    
     <div class="container">
         <header>
             <h1>COMBO MEALS</h1>
-            <p>Delicious combinations at great prices!</p>
+            <p style="font-size: 1.2rem; font-weight: 600;">Delicious combinations at great prices!</p>
         </header>
         
         <div class="combos-grid">
@@ -268,7 +412,7 @@
                         <li>1 Large Fries</li>
                         <li>2 Mocktails or Cold Coffees</li>
                     </ul>
-                    <p style="font-style: italic; color: #666;">For 2-3 people</p>
+                    <p style="font-style: italic; color: #666; margin-top: 10px;">For 2-3 people</p>
                 </div>
             </div>
             
@@ -291,7 +435,7 @@
         
         <div class="custom-combo">
             <h2>CUSTOM COMBO MEALS</h2>
-            <p style="text-align: center; margin-bottom: 20px;">Build Your Own Combo (Starts at ₹229)</p>
+            <p style="text-align: center; margin-bottom: 20px; font-size: 1.1rem;">Build Your Own Combo (Starts at ₹229)</p>
             
             <div class="steps">
                 <div class="step">
