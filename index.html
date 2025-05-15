@@ -1,230 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Food Menu with Images</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff9f4;
-      color: #333;
-    }
-
-    header {
-      background-color: #ff6f00;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    h2 {
-      border-bottom: 2px solid #ff6f00;
-      padding-bottom: 5px;
-      margin-top: 40px;
-    }
-
-    .combo {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-      padding: 15px;
-      background-color: #fff3e0;
-      border-radius: 8px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
-    .combo img {
-      width: 180px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 10px;
-      flex-shrink: 0;
-    }
-
-    .combo-details {
-      flex: 1;
-      min-width: 240px;
-    }
-
-    .combo h3 {
-      margin: 0 0 10px;
-      color: #d84315;
-    }
-
-    .price {
-      font-weight: bold;
-      float: right;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .example {
-      background-color: #f1f8e9;
-      padding: 10px;
-      margin: 10px 0;
-      border-left: 5px solid #7cb342;
-    }
-
-    footer {
-      background-color: #ffe0b2;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 700px) {
-      .combo {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .combo-details {
-        float: none;
-      }
-
-      .price {
-        float: none;
-        display: block;
-        margin-top: 5px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combo Meals Menu</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Combo Grid */
+        .combos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .combo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .combo-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .combo-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .combo-details {
+            padding: 20px;
+        }
+        
+        .combo-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .combo-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .combo-price {
+            font-size: 1.5rem;
+            color: #ff512f;
+            font-weight: bold;
+        }
+        
+        .combo-items {
+            margin-bottom: 15px;
+        }
+        
+        .combo-items li {
+            list-style-type: none;
+            padding: 5px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        /* Custom Combo Section */
+        .custom-combo {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .custom-combo h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .step h3 {
+            color: #ff512f;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #ff512f;
+        }
+        
+        .step ul {
+            list-style-type: none;
+        }
+        
+        .step li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .examples {
+            margin-top: 30px;
+        }
+        
+        .examples h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        
+        .food-images {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .food-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body>
-
-<header>
-  <h1>🍕 Combo Food Menu</h1>
-  <p>With Delicious Pictures</p>
-</header>
-
-<div class="container">
-  <h2>COMBO MEALS</h2>
-
-  <div class="combo">
-    <img src="https://media.istockphoto.com/id/157482029/photo/cheeseburger-french-fries-and-cola-drink.jpg" alt="Classic Combo" />
-    <div class="combo-details">
-      <h3>1. Classic Combo <span class="price">₹199</span></h3>
-      <ul>
-        <li>Cheesy Classic Burger (Veg/Chicken)</li>
-        <li>Regular Fries</li>
-        <li>Soft Drink (Coke / Sprite / Fanta)</li>
-      </ul>
+    <div class="container">
+        <header>
+            <h1>COMBO MEALS</h1>
+            <p>Delicious combinations at great prices!</p>
+        </header>
+        
+        <div class="combos-grid">
+            <!-- Combo 1 -->
+            <div class="combo-card">
+                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="combo-details">
+                    <div class="combo-title">
+                        <span class="combo-name">Classic Combo</span>
+                        <span class="combo-price">₹199</span>
+                    </div>
+                    <ul class="combo-items">
+                        <li>Cheesy Classic Burger (Veg/Chicken)</li>
+                        <li>Regular Fries</li>
+                        <li>Soft Drink (Coke / Sprite / Fanta)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Combo 2 -->
+            <div class="combo-card">
+                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="combo-details">
+                    <div class="combo-title">
+                        <span class="combo-name">Pizza Lover Combo</span>
+                        <span class="combo-price">₹299</span>
+                    </div>
+                    <ul class="combo-items">
+                        <li>7" Veggie Delight Pizza</li>
+                        <li>Garlic Breadsticks (2 pcs)</li>
+                        <li>Mint Mojito or Cold Coffee</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Combo 3 -->
+            <div class="combo-card">
+                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1603893662172-99ed0cea2a08?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="combo-details">
+                    <div class="combo-title">
+                        <span class="combo-name">Momo Mania Combo</span>
+                        <span class="combo-price">₹219</span>
+                    </div>
+                    <ul class="combo-items">
+                        <li>6 pcs Steamed Momos (Veg / Chicken)</li>
+                        <li>Peri Peri Fries</li>
+                        <li>Fruit Punch Mocktail</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Combo 4 -->
+            <div class="combo-card">
+                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="combo-details">
+                    <div class="combo-title">
+                        <span class="combo-name">Double Trouble Combo</span>
+                        <span class="combo-price">₹349</span>
+                    </div>
+                    <ul class="combo-items">
+                        <li>Double Decker Burger (Veg/Chicken)</li>
+                        <li>Cheese Loaded Fries</li>
+                        <li>Blue Lagoon Mocktail</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Combo 5 -->
+            <div class="combo-card">
+                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="combo-details">
+                    <div class="combo-title">
+                        <span class="combo-name">Friends Feast Combo</span>
+                        <span class="combo-price">₹699</span>
+                    </div>
+                    <ul class="combo-items">
+                        <li>1 Regular Pizza (Your choice)</li>
+                        <li>2 Burgers (1 Veg + 1 Chicken)</li>
+                        <li>1 Large Fries</li>
+                        <li>2 Mocktails or Cold Coffees</li>
+                    </ul>
+                    <p style="font-style: italic; color: #666;">For 2-3 people</p>
+                </div>
+            </div>
+            
+            <!-- Combo 6 -->
+            <div class="combo-card">
+                <div class="combo-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="combo-details">
+                    <div class="combo-title">
+                        <span class="combo-name">Desi Delight Combo</span>
+                        <span class="combo-price">₹259</span>
+                    </div>
+                    <ul class="combo-items">
+                        <li>Tandoori Momos (Veg / Chicken)</li>
+                        <li>Masala Fries</li>
+                        <li>Virgin Pina Colada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="custom-combo">
+            <h2>CUSTOM COMBO MEALS</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Build Your Own Combo (Starts at ₹229)</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <h3>Step 1: Choose One Main</h3>
+                    <ul>
+                        <li><strong>Burger:</strong></li>
+                        <li>Cheesy Classic (Veg/Chicken)</li>
+                        <li>Firecracker Burger</li>
+                        <li>Paneer Tandoori Burger</li>
+                        <li>Grilled Chicken Deluxe</li>
+                        <li><strong>Pizza (7"):</strong></li>
+                        <li>Margherita Bliss</li>
+                        <li>Veggie Delight</li>
+                        <li>Chicken Tikka Treat</li>
+                        <li>Paneer Paprika</li>
+                        <li><strong>Momos (6 pcs):</strong></li>
+                        <li>Steamed Veg / Chicken</li>
+                        <li>Tandoori Veg / Chicken</li>
+                        <li>Fried Momos (Cheese Optional)</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h3>Step 2: Choose One Side</h3>
+                    <ul>
+                        <li>Classic Salted Fries</li>
+                        <li>Peri Peri Fries</li>
+                        <li>Cheese Loaded Fries (+₹20)</li>
+                        <li>Garlic Breadsticks</li>
+                        <li>Chicken/Veg Nuggets</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h3>Step 3: Choose One Drink</h3>
+                    <ul>
+                        <li>Soft Drink (Coke/Sprite/Fanta)</li>
+                        <li>Mint Mojito (+₹20)</li>
+                        <li>Cold Coffee (+₹30)</li>
+                        <li>Fruit Punch / Blue Lagoon / Pina Colada (+₹30)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="examples">
+                <h3>Example Combos:</h3>
+                <ul>
+                    <li>Burger + Peri Peri Fries + Mint Mojito = ₹249</li>
+                    <li>Paneer Pizza + Garlic Bread + Cold Coffee = ₹279</li>
+                    <li>Tandoori Chicken Momos + Cheese Fries + Blue Lagoon = ₹299</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>C-1/503 Jagannath complex, Pramila nagar, Kandarpada, Dahisar W</p>
+                <p>Phone: +91 84336 15870</p>
+            </div>
+            
+            <div class="food-images">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Delicious food" class="food-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Tasty burger" class="food-image">
+                <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Pizza slice" class="food-image">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Fresh salad" class="food-image">
+                <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Chicken dish" class="food-image">
+            </div>
+        </footer>
     </div>
-  </div>
-
-  <div class="combo">
-    <img src="https://www.queensleeappetit.com/wp-content/uploads/2018/07/Meat-Lovers-Pizza-7.jpg" alt="Pizza Lover Combo" />
-    <div class="combo-details">
-      <h3>2. Pizza Lover Combo <span class="price">₹299</span></h3>
-      <ul>
-        <li>7" Veggie Delight Pizza</li>
-        <li>Garlic Breadsticks (2 pcs)</li>
-        <li>Mint Mojito or Cold Coffee</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="combo">
-    <img src="https://www.instagram.com/p/CnEfbz_L6pq/media/?size=l" alt="Momo Mania Combo" />
-    <div class="combo-details">
-      <h3>3. Momo Mania Combo <span class="price">₹219</span></h3>
-      <ul>
-        <li>6 pcs Steamed Momos (Veg / Chicken)</li>
-        <li>Peri Peri Fries</li>
-        <li>Fruit Punch Mocktail</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="combo">
-    <img src="https://www.instagram.com/p/DDj0ZsZOF6u/media/?size=l" alt="Double Trouble Combo" />
-    <div class="combo-details">
-      <h3>4. Double Trouble Combo <span class="price">₹349</span></h3>
-      <ul>
-        <li>Double Decker Burger (Veg/Chicken)</li>
-        <li>Cheese Loaded Fries</li>
-        <li>Blue Lagoon Mocktail</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="combo">
-    <img src="https://www.istockphoto.com/photos/pizza-burger-fries" alt="Friends Feast Combo" />
-    <div class="combo-details">
-      <h3>5. Friends Feast Combo <span class="price">₹699</span></h3>
-      <ul>
-        <li>1 Regular Pizza (Your choice)</li>
-        <li>2 Burgers (1 Veg + 1 Chicken)</li>
-        <li>1 Large Fries</li>
-        <li>2 Mocktails or Cold Coffees</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="combo">
-    <img src="https://www.instagram.com/p/C9i2AlmPrZ6/media/?size=l" alt="Desi Delight Combo" />
-    <div class="combo-details">
-      <h3>6. Desi Delight Combo <span class="price">₹259</span></h3>
-      <ul>
-        <li>Tandoori Momos (Veg / Chicken)</li>
-        <li>Masala Fries</li>
-        <li>Virgin Pina Colada</li>
-      </ul>
-    </div>
-  </div>
-
-  <h2>CUSTOM COMBO MEALS</h2>
-
-  <p><strong>Build Your Own Combo (Starts at ₹229)</strong></p>
-
-  <h3>Step 1: Choose One Main</h3>
-  <ul>
-    <li><strong>Burger:</strong> Cheesy Classic (Veg/Chicken), Firecracker Burger, Paneer Tandoori Burger, Grilled Chicken Deluxe</li>
-    <li><strong>Pizza (7”):</strong> Margherita Bliss, Veggie Delight, Chicken Tikka Treat, Paneer Paprika</li>
-    <li><strong>Momos (6 pcs):</strong> Steamed Veg / Chicken, Tandoori Veg / Chicken, Fried Momos (Cheese Optional)</li>
-  </ul>
-
-  <h3>Step 2: Choose One Side</h3>
-  <ul>
-    <li>Classic Salted Fries</li>
-    <li>Peri Peri Fries</li>
-    <li>Cheese Loaded Fries (+₹20)</li>
-    <li>Garlic Breadsticks</li>
-    <li>Chicken/Veg Nuggets</li>
-  </ul>
-
-  <h3>Step 3: Choose One Drink</h3>
-  <ul>
-    <li>Soft Drink (Coke/Sprite/Fanta)</li>
-    <li>Mint Mojito (+₹20)</li>
-    <li>Cold Coffee (+₹30)</li>
-    <li>Fruit Punch / Blue Lagoon / Pina Colada (+₹30)</li>
-  </ul>
-
-  <div class="example"><strong>Example Combo:</strong> Burger + Peri Peri Fries + Mint Mojito = ₹249</div>
-  <div class="example"><strong>Example Combo:</strong> Paneer Pizza + Garlic Bread + Cold Coffee = ₹279</div>
-  <div class="example"><strong>Example Combo:</strong> Tandoori Chicken Momos + Cheese Fries + Blue Lagoon = ₹299</div>
-</div>
-
-<footer>
-  <p><strong>Address:</strong> C-1/503 Jagannath Complex, Pramila Nagar, Kandarpada, Dahisar W</p>
-  <p><strong>Phone:</strong> +91 84336 15870</p>
-</footer>
-
 </body>
 </html>
